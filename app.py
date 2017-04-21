@@ -18,7 +18,9 @@ def hello():
 @app.route('/current', methods=['GET'])
 def getCurrent():
   try:
-    return "{}".format(bus.read_word_data(SENSOR_ADDR, 0))
+    raw = bus.read_word_data(SENSOR_ADDR, 0)
+    i = struct.unpack('>h', struct.pack('<H', raw))[0] / 256.0
+    return "{}".format(i)
   except Exception as e:
     app.logger.error("Unable to read data from I2C line, {}".format(e))
     return "Error: 100"
