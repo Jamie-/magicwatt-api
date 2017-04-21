@@ -1,6 +1,7 @@
 #!/usr/bin/python
 from flask import Flask
 import smbus
+import struct
 
 SENSOR_ADDR = 0x04
 bus = smbus.SMBus(1) # Change to 0 on older Pis
