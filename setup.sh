@@ -42,6 +42,7 @@ echo "[INFO] Changing GPU memory split..."
 echo "gpu_mem=16" >> $CONFIG
 
 # Add boot job for app
+echo "[INFO] Adding app as startup job..."
 head -n -1 /etc/rc.local > /etc/rc.local.tmp
 mv /etc/rc.local.tmp /etc/rc.local
 echo "# Start MagicWatt on boot" >> /etc/rc.local
