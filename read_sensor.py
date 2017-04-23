@@ -1,11 +1,13 @@
 #!/usr/bin/python
+# Some test code just to make sure the sensor and wiring is working as expected!
+
 import smbus
 import time
 import struct
 
-DEV_ADDR = 0x04
+DEV_ADDR = 0x04 # I2C Trinket bus address
 
-bus = smbus.SMBus(1)
+bus = smbus.SMBus(1) # Change to 0 on old Pis
 reads = 0
 errs = 0
 
