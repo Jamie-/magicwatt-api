@@ -41,4 +41,11 @@ sed -i "s/127.0.1.1.*$CURRENT_HOSTNAME/127.0.1.1\tMagicWatt/g" /etc/hosts
 echo "[INFO] Changing GPU memory split..."
 echo "gpu_mem=16" >> $CONFIG
 
+# Add boot job for app
+head -n -1 /etc/rc.local > /etc/rc.local.tmp
+mv /etc/rc.local.tmp /etc/rc.local
+echo "# Start MagicWatt on boot" >> /etc/rc.local
+echo "su -c /home/pi/magicwatt-api/app.py magicwatt &" >> /etc/rc.local
+echo "exit 0" >> /etc/rc.local
+
 reboot
